@@ -12,5 +12,13 @@ cur.execute('''CREATE TABLE IF NOT EXISTS users (
             
             address TEXT);
             ''')
+cur.execute('''CREATE TABLE IF NOT EXISTS products (
+            product_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL, 
+            description TEXT NOT NULL UNIQUE, 
+            price DOUBLE NOT NULL,
+            amount INTEGER NOT NULL);
+            ''')
+# double - дробное число
 
 
