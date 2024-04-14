@@ -33,20 +33,20 @@ class LoginWindow(Toplevel):
         self.notif = Label(self.frame, text='')
         self.notif.grid(row=3, column=1)
 
-        self.button = Button(self.frame, text='Войти', command=self.sign_up)
+        self.button = Button(self.frame, text='Войти', command=self.log_in)
         self.button.grid(row=4, column=1)
 
-    def sign_up(self):
-        if len(self.login_var.get()) < 5:
-            # config - настройка
-            self.notif.config(text='Длина логина должна быть больше 4', fg='red')
-        elif len(self.pass_var.get()) < 5:
-            # config - настройка
-            self.notif.config(text='Длина пароля должна быть больше 4', fg='red')
-        elif len(self.name_var.get()) < 1:
-            # config - настройка
-            self.notif.config(text='Поле "Имя" не может быть пустым', fg='red')
+    def log_in(self):
+        user = self.db.get_user_by_login(self.login_var.get())
+        print(user)
+
+        if self.pass_var.get() == user[3]:
+            self.notif.config(text='Вы успешно авторизованы', bg='green')
         else:
-            self.db.create_user(self.name_var.get(),  self.login_var.get(), self.pass_var.get())
-            self.notif.config(text='Вы успешно зарегистрированы', fg='green')
+            self.notif.config(text='Неверный логин или пароль', bg='red')
+
+
+
+
+
 

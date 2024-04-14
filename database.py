@@ -27,6 +27,12 @@ class Database:
                          (name, username, password))
         self.conn.commit()
 
+    def get_user_by_login(self, username):
+        self.cur.execute('SELECT * FROM users WHERE login = ?', (username, ))
+        return self.cur.fetchone() # достаем из ответ от БД 1 запись и возвращаем ее
+
+
+
 
 
 
