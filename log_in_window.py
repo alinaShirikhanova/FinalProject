@@ -12,7 +12,6 @@ class LoginWindow(Toplevel):
         self.frame.pack()
         self.db = Database()
 
-
         # создание лейбла логин
         self.login = Label(self.frame, text="Логин")
         self.login.grid(row=0, column=0)
@@ -38,15 +37,11 @@ class LoginWindow(Toplevel):
 
     def log_in(self):
         user = self.db.get_user_by_login(self.login_var.get())
-        print(user)
-
-        if self.pass_var.get() == user[3]:
-            self.notif.config(text='Вы успешно авторизованы', bg='green')
+        if user is not None and self.pass_var.get() == user[3]:
+            self.notif.config(text='Вы успешно авторизованы', fg='green')
         else:
-            self.notif.config(text='Неверный логин или пароль', bg='red')
-
-
-
-
-
-
+            self.notif.config(text='Неверный логин или пароль', fg='red')
+# 1. Создать новый файл session.py
+# 2. Создать класс и подумать, от какого класса он должен наследоваться
+# 3. Дать заголовок окну
+# 4. Задать размер окна
