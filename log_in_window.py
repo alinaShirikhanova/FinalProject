@@ -1,6 +1,7 @@
 from tkinter import *
 
 from database import Database
+from session_window import SessionWindow
 
 
 class LoginWindow(Toplevel):
@@ -39,6 +40,8 @@ class LoginWindow(Toplevel):
         user = self.db.get_user_by_login(self.login_var.get())
         if user is not None and self.pass_var.get() == user[3]:
             self.notif.config(text='Вы успешно авторизованы', fg='green')
+            self.destroy()
+            SessionWindow()
         else:
             self.notif.config(text='Неверный логин или пароль', fg='red')
 # 1. Создать новый файл session.py

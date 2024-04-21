@@ -31,8 +31,14 @@ class Database:
         self.cur.execute('SELECT * FROM users WHERE login = ?', (username, ))
         return self.cur.fetchone() # достаем из ответ от БД 1 запись и возвращаем ее
 
+    def get_all_users(self):
+        self.cur.execute('SELECT * FROM users')
+        # print(self.cur.fetchone()) # достаем 1 запись
+        # print(self.cur.fetchmany(3)) # достаем несколько записей
+        print(self.cur.fetchall()) # достаем все записи
 
 
+# Реализовать метод, который достат все товары из базы данных
 
 
 

@@ -7,7 +7,7 @@ class SignUpWindow(Toplevel):
     def __init__(self):
         super().__init__()
         self.geometry('500x500')
-        self.title("Окно регистраии")
+        self.title("Окно регистрации")
         self.frame = Frame(self, width=300, height=300)
         self.frame.pack()
         self.db = Database()
@@ -57,4 +57,5 @@ class SignUpWindow(Toplevel):
         else:
             self.db.create_user(self.name_var.get(),  self.login_var.get(), self.pass_var.get())
             self.notif.config(text='Вы успешно зарегистрированы', fg='green')
+            self.destroy()
 
